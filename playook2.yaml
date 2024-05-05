@@ -27,10 +27,14 @@
         gpgcheck: yes
         gpgkey: https://download.docker.com/linux/centos/gpg
 
-    - name: Install Docker CE
-      package:
-        name: docker-ce
+    - name: Install Docker
+      yum:
+        name: docker
         state: present
+      vars:
+        amazon_linux_extras: 'docker'
+
+
 
     - name: Start Docker service
       service:
